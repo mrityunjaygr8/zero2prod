@@ -5,14 +5,14 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.openssl pkgs.hurl ];
+  packages = [ pkgs.git pkgs.openssl pkgs.hurl pkgs.postgresql ];
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = "echo hello from $GREET";
+  scripts.init-db.exec = (builtins.readFile ./scripts/init_db.sh);
 
   enterShell = ''
-    hello
-    git --version
+    export PATH="$HOME/.cargo/bin:$PATH"    
   '';
 
   # https://devenv.sh/languages/
