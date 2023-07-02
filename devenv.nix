@@ -5,7 +5,7 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.openssl ];
+  packages = [ pkgs.git pkgs.openssl pkgs.hurl ];
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = "echo hello from $GREET";
