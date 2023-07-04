@@ -1,0 +1,20 @@
+services:
+  app:
+    build:
+      context: ./.
+      
+    container_name: app_main
+    # restart: always
+    ports:
+      - 8000:8000
+    environment:
+      - APP_DATABASE__HOST=db
+      - APP_DATABASE__DATABASE_NAME=postgres
+      - APP_DATABASE__PASSWORD=postgres
+      - APP_DATABASE__USERNAME=postgres
+  db:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
