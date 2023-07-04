@@ -5,7 +5,21 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.openssl pkgs.hurl pkgs.postgresql pkgs.sqlx-cli pkgs.cargo-watch pkgs.cargo-tarpaulin pkgs.cargo-audit pkgs.cargo-udeps pkgs.bunyan-rs];
+  packages = with pkgs; [
+    git
+    openssl
+    hurl
+    postgresql
+    sqlx-cli
+    cargo-watch
+    cargo-tarpaulin
+    cargo-audit
+    cargo-udeps
+    bunyan-rs
+    pkg-config
+    llvmPackages_16.bintools
+    clang
+  ];
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = "echo hello from $GREET";
@@ -13,10 +27,12 @@
 
   enterShell = ''
     export PATH="$HOME/.cargo/bin:$PATH"    
+    export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
   '';
 
   # https://devenv.sh/languages/
   languages.rust.enable = true;
+  languages.rust.version = "latest";
 
   # https://devenv.sh/pre-commit-hooks/
   # pre-commit.hooks.shellcheck.enable = true;
