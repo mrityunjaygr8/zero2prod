@@ -1,6 +1,5 @@
 use actix_web::rt::spawn;
 use once_cell::sync::Lazy;
-use secrecy::ExposeSecret;
 use sqlx::{Connection, PgConnection};
 use sqlx::{Executor, PgPool};
 use std::net::TcpListener;
