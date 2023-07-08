@@ -12,6 +12,7 @@ services:
       - APP_DATABASE__DATABASE_NAME=postgres
       - APP_DATABASE__PASSWORD=postgres
       - APP_DATABASE__USERNAME=postgres
+      - APP_APPLICATION__BASE_URL="http://localhost:8000"
   db:
     image: postgres:15
     ports:
